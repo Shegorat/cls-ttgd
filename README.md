@@ -1,33 +1,42 @@
 # cls-ttgd
 
-**cls-ttgd** — декриптор для *ttarch* архивов игр компании Telltale Games.
+**cls-ttgd** — a decryptor for *ttarch* archives used in games developed by Telltale Games.
 
 ---
 
-## 📦 Опции
+## Support the Project
 
-| Параметр | Описание |
-| -------- | -------- |
-| `game=<game_id>` | Номер ключа для дешифровки |
-| `ver=<version>` | Версия алгоритма (используется вместе с `key`) |
-| `key=<key>` | Ключ в hex-виде для дешифровки |
-| `strict` | Включает строгую проверку заголовков архивов, бросает ошибку вместо пропуска файлов |
-| `t=<thread_count>` | Количество рабочих потоков |
-| `r` | Рекомпрессия блоков (пока поддерживается только `deflate`) |
+[![Support on Patreon](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/Shegorat)
 
-**Примечания:**
-- Опции можно указывать без знака `=` (например: `game42`).
-- Можно положить рядом `zlib.dll` / `zlib64.dll` для рекомпрессии — библиотека будет автоматически подхвачена.
+If you find this project useful, consider supporting development on Patreon.
 
 ---
 
-## ⚙️ Настройки через `cls.ini`
+## Options
 
-| Параметр | Описание |
-| -------- | -------- |
-| `ThreadCount=<thread_count>` | Количество рабочих потоков (переопределяет опцию `t`) |
+| Parameter | Description |
+| ---------- | ------------ |
+| `game=<game_id>` | Key ID used for decryption |
+| `ver=<version>` | Algorithm version (used together with `key`) |
+| `key=<key>` | Hex-encoded decryption key |
+| `strict` | Enables strict archive header validation (throws an error instead of skipping invalid files) |
+| `t=<thread_count>` | Number of worker threads |
+| `r` | Block recompression (currently only `deflate` is supported) |
 
-**Пример:**
+**Notes:**
+
+- Options can be specified without the `=` separator (e.g., `game42`).
+- You can place `zlib.dll` / `zlib64.dll` next to the executable — it will be automatically loaded when recompression is enabled.
+
+---
+
+## Configuration via `cls.ini`
+
+| Parameter | Description |
+| ---------- | ------------ |
+| `ThreadCount=<thread_count>` | Number of worker threads (overrides the `t` option) |
+
+**Example:**
 
 ```ini
 [ttgd]
@@ -36,8 +45,8 @@ ThreadCount=50%
 
 ---
 
-## 🗝️ Список ключей:
-| Код ключа | Название игры |
+## 🗝️ List of keys:
+| Key ID | Game Name |
 | ------ | ------ |
 | 0  | Wallace & Gromit: Episode 1: Fright of the Bumblebees |
 | 1  | Wallace & Gromit: Episode 2: The Last Resort |
